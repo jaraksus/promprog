@@ -1,7 +1,8 @@
 #!/bin/bash
 
 n_workers=1
-file=""
+file="labelled_newscatcher_dataset.csv"
+col=""
 path="./"
 
 while [[ $# -gt 0 ]]
@@ -16,6 +17,11 @@ case $key in
 	;;
 	-f|--file)
 	file=$2
+	shift
+	shift
+	;;
+	-c|--column)
+	col=$2
 	shift
 	shift
 	;;
@@ -42,4 +48,4 @@ then
 	exit 1
 fi
 
-cat $file | parallel -j "$n_workers" wget -P "$path" {}
+cat $file | awk -F';' -v col="$col" -f parse_links.awk | parallel -j "$n_workers" wget -P "$path" {}
