@@ -14,14 +14,14 @@ case $key in
 	shift
 	shift
 	;;
-    -r|--reducers)
-    n_reducers="$2"
-    shift
-    shift
-    ;;
-    *)
-    shift
-    ;;
+	-r|--reducers)
+	n_reducers="$2"
+	shift
+	shift
+	;;
+	*)
+	shift
+	;;
 esac
 done
 
