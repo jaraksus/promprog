@@ -2,10 +2,10 @@
 // Created by Pavel Akhtyamov on 2019-03-19.
 //
 
-#include <AbstractFactory/cpp-source/rooms/Room.h>
-#include <AbstractFactory/cpp-source/factories/RoomFactory.h>
-#include <AbstractFactory/cpp-source/factories/BasementFactory.h>
-#include <AbstractFactory/cpp-source/factories/CavesFactory.h>
+#include "AbstractFactory/cpp-source/rooms/Room.h"
+#include "AbstractFactory/cpp-source/factories/RoomFactory.h"
+#include "AbstractFactory/cpp-source/factories/BasementFactory.h"
+#include "AbstractFactory/cpp-source/factories/CavesFactory.h"
 #include <vector>
 #include "IsaacFacade.h"
 
