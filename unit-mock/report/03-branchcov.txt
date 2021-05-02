@@ -1,0 +1,15 @@
+Weather::GetResponseForCity:
+if (response.status_code != 200) {  ----> +2  { (GetResponseForCity), (GetResponseForCity_UnknownCity) }
+
+Weather::GetDifferenceString:
+if (diff < 0) {                     ----> +2  { (GetDifferenceString_FirstColder), (GetDifferenceString_FirstWarmer) }
+
+Weather::GetTomorrowDiff:
+if (diff > 3) {                     ----> +2  { (GetTomorrowDiff_MuchWarmer), (GetTomorrowDiff_MuchColder) }
+else if (diff > 0.5) {              ----> +2  { (GetTomorrowDiff_Warmer), (GetTomorrowDiff_Colder) }
+else if (diff < -3) {               ----> +2  { (GetTomorrowDiff_MuchColder), (GetTomorrowDiff_Colder) }
+else if (diff < -0.5) {             ----> +2  { (GetTomorrowDiff_Colder), (GetTomorrowDiff_TheSame) }
+
+Итого: 12 векток
+Покрыто: 12
+Процент покрытия (branch coverage): 12 / 12 * 100% = 100%

@@ -1,0 +1,15 @@
+IsLeap:
+if (year <= 0) {        			                          -----> +2   year = { -20(IncorrectArgument), 100(MultipleOf100ButNotOf400) }
+if (year % 4 == 0) {    			                          -----> +2   year = { 8(MultipleOf4ButNotOf100), 2021(NotMultipleOf4) }
+if (year % 100 == 0) {  			                          -----> +2   year = { 800(MultipleOf400), 8(MultipleOf4ButNotOf100) }
+if (year % 400 == 0) {  			                          -----> +2   year = { 500(MultipleOf100ButNotOf400), 800(MultipleOf400) }
+
+GetMonthDays:
+if (month == 2) {       			                          -----> +2   month = { 2(FebruaryLeapYear), 6(June2021) }
+if (IsLeap(year)) {     			                          -----> +2   year = { 2020(FebruaryLeapYear), 2021(February2021) }
+if (month > 12 || month <= 0) {                               -----> +2   month = { -5(InvalidArgument), 2(February2021) }
+if (month == 4 || month == 6 || month == 9 || month == 11) {  -----> +2   month = { 6(June2021), 7(July2021) }
+
+Итого: 16 веток
+Покрыто: 16
+Процент покрытия (branch coverage): 16 / 16 * 100% = 100%

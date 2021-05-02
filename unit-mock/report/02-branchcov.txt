@@ -1,0 +1,15 @@
+GetTree:
+if (!exists(path)) {                        -----> +2                     { (GetTree_InvalidArgumentPathNotExist), (GetTree_WithCommonFiles) }
+if (!is_directory(path)) {                  -----> +2                     { (GetTree_InvalidArgumentPathNotDir), (GetTree_WithCommonFiles) }
+for (auto& child: directory_iterator(path)) -----> +2(последний или нет)  { (GetTree_WithCommonFiles - обе ветки) }
+if (is_directory(child)){                   -----> +2                     { (GetTree_WithCommonFiles - обе ветки) }
+if (dirs_only) {                            -----> +2                     { (GetTree_WithCommonFiles), (GetTree_WithoutCommonFiles) }
+
+FilterEmptyNodes: 
+if (!node.is_dir) {                         -----> +2                     { (FilterEmptyNodes - обе ветки) }
+if (node.children.empty()) {                -----> +2                     { (FilterEmptyNodes - обе ветки) }
+for (auto& child: node.children) {          -----> +2                     { (FilterEmptyNodes - обе ветки) }
+
+Итого: 16 веток
+Покрыто: 16
+Процент покрытия (branch coverage): 16 / 16 * 100% = 100%
